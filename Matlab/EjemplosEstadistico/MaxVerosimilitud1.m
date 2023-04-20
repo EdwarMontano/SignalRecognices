@@ -4,7 +4,7 @@ clc; clearvars, close all;
 randn('seed',0);
 u=[2 ; -2];
 Sigm=[0.9  0.2 ; 0.2  0.3];
-N=5000
+N=500
 X=mvnrnd(u,Sigm, N);
 
 % Estimate u_est

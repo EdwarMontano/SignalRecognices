@@ -1,6 +1,7 @@
 clc; clearvars ; % close all;
 figure
 % Generar Datos Clase 1 (d=1)
+randn('seed',0);
 ND1=400; % Numero vectores 
 mu1 = 5; % Promedio
 SIG1 = 1.5; % Varianza
