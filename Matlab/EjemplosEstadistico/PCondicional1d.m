@@ -1,8 +1,8 @@
 clc; clearvars ; % close all;
 figure
 % Generar Datos Clase 1 (d=1)
-randn('seed',0);
-ND1=400; % Numero vectores 
+randn('seed',1);
+ND1=4000; % Numero vectores 
 mu1 = 5; % Promedio
 SIG1 = 1.5; % Varianza
 r1 = mvnrnd(mu1,SIG1,ND1); %data set Clase 1
@@ -26,6 +26,7 @@ axis([min([minr1 minr2]) max([maxr1 maxr2]) -0.2 0.2]); title('Data Set (2 clase
 Nbin=ND1/10;
 delta1=(maxr1-minr1)/Nbin; %longitud bin
 eje1=[minr1: delta1 : maxr1-delta1];
+
 pxw1a=hist(r1,Nbin)/(delta1*ND1); % Se divide por delta para obtener la densidad de probabilidad
 
 pxw1 = medfilt1(pxw1a,5); %;%filtro mediana
