@@ -44,7 +44,7 @@ eje2=[minr2: delta2 : maxr2-delta2];
 pxw2a=hist(r2,Nbin)/(delta2*ND2);
 
 pxw2 = medfilt1(pxw2a,5);
-
+~=
 %pxw2=pxw2a;
 subplot(2,2,4); 
 plot(eje2,pxw2,'r');title('p(x|w2)'); xlabel('x');

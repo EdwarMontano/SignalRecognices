@@ -41,40 +41,44 @@ if __name__=='__main__':
     plt.ylim([-0.2,0.2])
     ax.set_ylabel('')
     ax.set_xlabel('X')
+    ND1=dataset.muestras
+    ND2=dataset.muestras
+    Pw1=ND1/(ND1+ND2)
+    Pw2=ND2/(ND1+ND2) 
 
 
     for i in range(2):
         if i == 0:
             ax = fig.add_subplot(gs[1, i])
-            ax.set_xlabel('p(x|w%d)' % (i+1))
-            ND1=dataset.muestras
+            ax.set_xlabel('p(x|w1)')
             Nbin=ND1/10;
             delta1=(r1.max()-r1.min())/Nbin
             eje1=np.linspace(r1.min(), r1.max()-delta1, num=int(Nbin))
             n,bins=np.histogram(r1,bins=int(Nbin))
             pxw1a=n/(delta1*ND1)
-            pxw1=medfilt(pxw1a, kernel_size=5)            
-            ax.plot(eje1, pxw1)
+            # pxw1=medfilt(pxw1a, kernel_size=5)            
+            ax.plot(eje1, pxw1a)
             # ax.set_ylabel('YLabel1 %d'i+1)
             ax.tick_params(axis='x', rotation=55)
             ax = fig.add_subplot(gs[2, 0])
-            ax.plot(eje1, 100*pxw1)
-            plt.hist(r1,bins=int(Nbin) ,ec="yellow",color='blue', alpha=0.2)
+            ax.set_xlabel('p(w1,x)= p(x|w1) P(w1)')
+            ax.plot(eje1, pxw1a*Pw1)
+            # plt.hist(r1,bins=int(Nbin) ,ec="yellow",color='blue', alpha=0.2)
 
         elif i == 1:
             ax = fig.add_subplot(gs[1, i])
-            ax.set_xlabel('p(x|w%d)' % (i+1))
-            ND2=dataset.muestras
+            ax.set_xlabel('p(x|w2)')
             Nbin2=ND2/10;
             delta2=(r2.max()-r2.min())/Nbin
             eje2=np.linspace(r2.min(), r2.max()-delta2, num=int(Nbin2))
             n2,bins2=np.histogram(r2,bins=int(Nbin))
             pxw2a=n2/(delta2*ND2)
-            pxw2=medfilt(pxw2a, kernel_size=5)
-            ax.plot(eje2, pxw2,color='orange')
+            # pxw2=medfilt(pxw2a, kernel_size=5)
+            ax.plot(eje2, pxw2a,color='orange')
             ax = fig.add_subplot(gs[2, 1])
-            ax.plot(eje2, 100*pxw2, color='orange')
-            plt.hist(r2,bins=int(Nbin2) ,ec="red",color='orange', alpha=0.2)
+            ax.set_xlabel('P(w2,x)= p(x|w2) P(w2)')
+            ax.plot(eje2, pxw2a*Pw2, color='orange')
+            # plt.hist(r2,bins=int(Nbin2) ,ec="red",color='orange', alpha=0.2)
 
 
             # ax.set_ylabel('YLabel1 %d'i+1)
