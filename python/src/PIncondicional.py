@@ -1,12 +1,8 @@
 import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import numpy as np
-from scipy.signal import medfilt
 from scipy.interpolate import make_interp_spline
-
-
-
-
+from scipy.signal import medfilt
 
 # np.random.seed(0)
 fig = plt.figure(tight_layout=True)
